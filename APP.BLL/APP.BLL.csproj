@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{177AAA65-2D7C-4FFA-A349-363B6BD08176}</ProjectGuid>
+    <ProjectGuid>{A6C4B020-E1F0-409F-BFC0-2F300A78F0CF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AAP.DAL</RootNamespace>
-    <AssemblyName>AAP.DAL</AssemblyName>
+    <RootNamespace>APP.BLL</RootNamespace>
+    <AssemblyName>APP.BLL</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
