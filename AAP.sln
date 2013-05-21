@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AAP.Web", "AAP.Web\AAP.Web.csproj", "{193CE6EE-4B10-4985-BC36-3DEB08DBADBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AAP.DAL", "AAP.DAL\AAP.DAL.csproj", "{201DC78A-B72A-4837-9463-6CE8B17B9933}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AAP.BLL", "AAP.BLL\AAP.BLL.csproj", "{CACA2F4C-CD0A-4343-AE87-A80A519BB42B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{193CE6EE-4B10-4985-BC36-3DEB08DBADBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{193CE6EE-4B10-4985-BC36-3DEB08DBADBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{193CE6EE-4B10-4985-BC36-3DEB08DBADBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{193CE6EE-4B10-4985-BC36-3DEB08DBADBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{201DC78A-B72A-4837-9463-6CE8B17B9933}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{201DC78A-B72A-4837-9463-6CE8B17B9933}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{201DC78A-B72A-4837-9463-6CE8B17B9933}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{201DC78A-B72A-4837-9463-6CE8B17B9933}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CACA2F4C-CD0A-4343-AE87-A80A519BB42B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CACA2F4C-CD0A-4343-AE87-A80A519BB42B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CACA2F4C-CD0A-4343-AE87-A80A519BB42B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CACA2F4C-CD0A-4343-AE87-A80A519BB42B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
