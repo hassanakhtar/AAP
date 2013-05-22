@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="752c4f4f97024232a457d4b943e2c692" Name="Diagram1">
+        <EntityTypeShape EntityType="AAP.DAL.Address" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AAP.DAL.Branch" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AAP.DAL.Class" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AAP.DAL.Course" Width="1.5" PointX="7.5" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AAP.DAL.Exams" Width="1.5" PointX="12" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="AAP.DAL.Student" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AAP.DAL.StudentAttendance" Width="1.5" PointX="12" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AAP.DAL.StudentCourses" Width="1.5" PointX="9.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AAP.DAL.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AAP.DAL.Teacher" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AAP.DAL.TeacherAttendance" Width="1.5" PointX="12" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="AAP.DAL.TeacherCourses" Width="1.5" PointX="9.75" PointY="11.375" IsExpanded="true" />
+        <AssociationConnector Association="AAP.DAL.FK_Branch_Address" ManuallyRouted="false" />
+        <AssociationConnector Association="AAP.DAL.FK_Student_Address" ManuallyRouted="false" />
+        <AssociationConnector Association="AAP.DAL.FK_Teacher_Address" ManuallyRouted="false" />
+        <AssociationConnector Association="AAP.DAL.FK_Class_Branch" ManuallyRouted="false" />
+        <AssociationConnector Association="AAP.DAL.FK_Course_Class" ManuallyRouted="false" />
+        <AssociationConnector Association="AAP.DAL.FK_StudentCourses_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="AAP.DAL.FK_TeacherCourses_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="AAP.DAL.FK_Exams_StudentCourses" ManuallyRouted="false" />
+        <AssociationConnector Association="AAP.DAL.FK_StudentCourses_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="AAP.DAL.FK_StudentAttendance_StudentCourses" ManuallyRouted="false" />
+        <AssociationConnector Association="AAP.DAL.FK_TeacherCourses_Teacher" ManuallyRouted="false" />
+        <AssociationConnector Association="AAP.DAL.FK_TeacherAttendance_TeacherCourses" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

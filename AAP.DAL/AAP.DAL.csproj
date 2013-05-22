@@ -30,8 +30,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,11 +47,89 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="AapDataEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AapDataEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AapDataEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AapDataEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AapDataEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AapDataEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Address.cs">
+      <DependentUpon>AapDataEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Branch.cs">
+      <DependentUpon>AapDataEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class.cs">
+      <DependentUpon>AapDataEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Course.cs">
+      <DependentUpon>AapDataEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Exams.cs">
+      <DependentUpon>AapDataEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\DataServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IDataServices.cs" />
+    <Compile Include="Student.cs">
+      <DependentUpon>AapDataEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StudentAttendance.cs">
+      <DependentUpon>AapDataEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StudentCourses.cs">
+      <DependentUpon>AapDataEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>AapDataEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher.cs">
+      <DependentUpon>AapDataEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TeacherAttendance.cs">
+      <DependentUpon>AapDataEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TeacherCourses.cs">
+      <DependentUpon>AapDataEntities.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\AAP-Database.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="AapDataEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AapDataEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AapDataEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AapDataEntities.edmx</DependentUpon>
+      <LastGenOutput>AapDataEntities.Context.cs</LastGenOutput>
+    </None>
+    <None Include="AapDataEntities.edmx.diagram">
+      <DependentUpon>AapDataEntities.edmx</DependentUpon>
+    </None>
+    <None Include="AapDataEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AapDataEntities.edmx</DependentUpon>
+      <LastGenOutput>AapDataEntities.cs</LastGenOutput>
+    </None>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

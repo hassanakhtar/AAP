@@ -1,0 +1,927 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AAP.DAL.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="AAPDALStoreContainer">
+          <EntitySet Name="Address" EntityType="AAP.DAL.Store.Address" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Branch" EntityType="AAP.DAL.Store.Branch" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Class" EntityType="AAP.DAL.Store.Class" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Course" EntityType="AAP.DAL.Store.Course" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Exams" EntityType="AAP.DAL.Store.Exams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Student" EntityType="AAP.DAL.Store.Student" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="StudentAttendance" EntityType="AAP.DAL.Store.StudentAttendance" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="StudentCourses" EntityType="AAP.DAL.Store.StudentCourses" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="AAP.DAL.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Teacher" EntityType="AAP.DAL.Store.Teacher" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TeacherAttendance" EntityType="AAP.DAL.Store.TeacherAttendance" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TeacherCourses" EntityType="AAP.DAL.Store.TeacherCourses" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Branch_Address" Association="AAP.DAL.Store.FK_Branch_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Branch" EntitySet="Branch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Class_Branch" Association="AAP.DAL.Store.FK_Class_Branch">
+            <End Role="Branch" EntitySet="Branch" />
+            <End Role="Class" EntitySet="Class" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_Class" Association="AAP.DAL.Store.FK_Course_Class">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="Course" EntitySet="Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exams_StudentCourses" Association="AAP.DAL.Store.FK_Exams_StudentCourses">
+            <End Role="StudentCourses" EntitySet="StudentCourses" />
+            <End Role="Exams" EntitySet="Exams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Address" Association="AAP.DAL.Store.FK_Student_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentAttendance_StudentCourses" Association="AAP.DAL.Store.FK_StudentAttendance_StudentCourses">
+            <End Role="StudentCourses" EntitySet="StudentCourses" />
+            <End Role="StudentAttendance" EntitySet="StudentAttendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentCourses_Course" Association="AAP.DAL.Store.FK_StudentCourses_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="StudentCourses" EntitySet="StudentCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentCourses_Student" Association="AAP.DAL.Store.FK_StudentCourses_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="StudentCourses" EntitySet="StudentCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacher_Address" Association="AAP.DAL.Store.FK_Teacher_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Teacher" EntitySet="Teacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeacherAttendance_TeacherCourses" Association="AAP.DAL.Store.FK_TeacherAttendance_TeacherCourses">
+            <End Role="TeacherCourses" EntitySet="TeacherCourses" />
+            <End Role="TeacherAttendance" EntitySet="TeacherAttendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeacherCourses_Course" Association="AAP.DAL.Store.FK_TeacherCourses_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="TeacherCourses" EntitySet="TeacherCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeacherCourses_Teacher" Association="AAP.DAL.Store.FK_TeacherCourses_Teacher">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="TeacherCourses" EntitySet="TeacherCourses" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AddressLine1" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="AddressLine2" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="State" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Country" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Phone1" Type="nvarchar" MaxLength="20" />
+          <Property Name="Phone2" Type="nvarchar" MaxLength="20" />
+          <Property Name="ContactPerson" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateLastModifiedUTC" Type="datetime" />
+          <Property Name="IsArchive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="nvarchar" MaxLength="10" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="AddressId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="Section" Type="char" MaxLength="2" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="BranchId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="ClassId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Exams">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TheoryMarksTotal" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="TheoryMarksObtained" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="PracticalMarksTotal" Type="decimal" Scale="2" />
+          <Property Name="PracticalMarksObtained" Type="decimal" Scale="2" />
+          <Property Name="TotalMaxMarks" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="TotalMarksObtained" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="LastDateModified" Type="datetime" Nullable="false" />
+          <Property Name="StudentCourseId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="20" />
+          <Property Name="Gender" Type="char" Nullable="false" MaxLength="6" />
+          <Property Name="Religion" Type="nvarchar" MaxLength="20" />
+          <Property Name="DateOfBirth" Type="datetime" Nullable="false" />
+          <Property Name="Picture" Type="image" />
+          <Property Name="Guardian" Type="nvarchar" MaxLength="50" />
+          <Property Name="Relation" Type="nvarchar" MaxLength="50" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="500" />
+          <Property Name="AddressId" Type="bigint" Nullable="false" />
+          <Property Name="ClassId" Type="bigint" Nullable="false" />
+          <Property Name="GuardianCNIC" Type="nvarchar" MaxLength="30" />
+          <Property Name="LastModified" Type="datetime" />
+          <Property Name="IsArchive" Type="bit" />
+        </EntityType>
+        <EntityType Name="StudentAttendance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StudentCourseId" Type="bigint" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="IsPresent" Type="bit" Nullable="false" />
+          <Property Name="OnLeave" Type="bit" />
+          <Property Name="Comments" Type="text" />
+          <Property Name="LastModified" Type="datetime" Nullable="false" />
+          <Property Name="IsArchive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentCourses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StudentId" Type="bigint" Nullable="false" />
+          <Property Name="CourseId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="20" />
+          <Property Name="Gender" Type="char" Nullable="false" MaxLength="6" />
+          <Property Name="Religion" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="DateOfBirth" Type="datetime" />
+          <Property Name="Picture" Type="image" />
+          <Property Name="CNIC" Type="nvarchar" MaxLength="30" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="500" />
+          <Property Name="AddressId" Type="bigint" Nullable="false" />
+          <Property Name="ClassId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TeacherAttendance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TeacherCourseId" Type="bigint" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="IsPresent" Type="bit" />
+          <Property Name="OnLeave" Type="bit" />
+          <Property Name="Comments" Type="text" />
+          <Property Name="LastModifed" Type="datetime" />
+          <Property Name="IsArchive" Type="bit" />
+        </EntityType>
+        <EntityType Name="TeacherCourses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TeacherId" Type="bigint" Nullable="false" />
+          <Property Name="CourseId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Branch_Address">
+          <End Role="Address" Type="AAP.DAL.Store.Address" Multiplicity="1" />
+          <End Role="Branch" Type="AAP.DAL.Store.Branch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Branch">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Class_Branch">
+          <End Role="Branch" Type="AAP.DAL.Store.Branch" Multiplicity="1" />
+          <End Role="Class" Type="AAP.DAL.Store.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="BranchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_Class">
+          <End Role="Class" Type="AAP.DAL.Store.Class" Multiplicity="1" />
+          <End Role="Course" Type="AAP.DAL.Store.Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exams_StudentCourses">
+          <End Role="StudentCourses" Type="AAP.DAL.Store.StudentCourses" Multiplicity="1" />
+          <End Role="Exams" Type="AAP.DAL.Store.Exams" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentCourses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exams">
+              <PropertyRef Name="StudentCourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Address">
+          <End Role="Address" Type="AAP.DAL.Store.Address" Multiplicity="1" />
+          <End Role="Student" Type="AAP.DAL.Store.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentAttendance_StudentCourses">
+          <End Role="StudentCourses" Type="AAP.DAL.Store.StudentCourses" Multiplicity="1" />
+          <End Role="StudentAttendance" Type="AAP.DAL.Store.StudentAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentCourses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentAttendance">
+              <PropertyRef Name="StudentCourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentCourses_Course">
+          <End Role="Course" Type="AAP.DAL.Store.Course" Multiplicity="1" />
+          <End Role="StudentCourses" Type="AAP.DAL.Store.StudentCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentCourses">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentCourses_Student">
+          <End Role="Student" Type="AAP.DAL.Store.Student" Multiplicity="1" />
+          <End Role="StudentCourses" Type="AAP.DAL.Store.StudentCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentCourses">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacher_Address">
+          <End Role="Address" Type="AAP.DAL.Store.Address" Multiplicity="1" />
+          <End Role="Teacher" Type="AAP.DAL.Store.Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Teacher">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeacherAttendance_TeacherCourses">
+          <End Role="TeacherCourses" Type="AAP.DAL.Store.TeacherCourses" Multiplicity="1" />
+          <End Role="TeacherAttendance" Type="AAP.DAL.Store.TeacherAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TeacherCourses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TeacherAttendance">
+              <PropertyRef Name="TeacherCourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeacherCourses_Course">
+          <End Role="Course" Type="AAP.DAL.Store.Course" Multiplicity="1" />
+          <End Role="TeacherCourses" Type="AAP.DAL.Store.TeacherCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TeacherCourses">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeacherCourses_Teacher">
+          <End Role="Teacher" Type="AAP.DAL.Store.Teacher" Multiplicity="1" />
+          <End Role="TeacherCourses" Type="AAP.DAL.Store.TeacherCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TeacherCourses">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AAP.DAL" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="AapDataEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Address" EntityType="AAP.DAL.Address" />
+          <EntitySet Name="Branch" EntityType="AAP.DAL.Branch" />
+          <EntitySet Name="Class" EntityType="AAP.DAL.Class" />
+          <EntitySet Name="Course" EntityType="AAP.DAL.Course" />
+          <EntitySet Name="Exams" EntityType="AAP.DAL.Exams" />
+          <EntitySet Name="Student" EntityType="AAP.DAL.Student" />
+          <EntitySet Name="StudentAttendance" EntityType="AAP.DAL.StudentAttendance" />
+          <EntitySet Name="StudentCourses" EntityType="AAP.DAL.StudentCourses" />
+          <EntitySet Name="sysdiagrams" EntityType="AAP.DAL.sysdiagrams" />
+          <EntitySet Name="Teacher" EntityType="AAP.DAL.Teacher" />
+          <EntitySet Name="TeacherAttendance" EntityType="AAP.DAL.TeacherAttendance" />
+          <EntitySet Name="TeacherCourses" EntityType="AAP.DAL.TeacherCourses" />
+          <AssociationSet Name="FK_Branch_Address" Association="AAP.DAL.FK_Branch_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Branch" EntitySet="Branch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Address" Association="AAP.DAL.FK_Student_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacher_Address" Association="AAP.DAL.FK_Teacher_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Teacher" EntitySet="Teacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Class_Branch" Association="AAP.DAL.FK_Class_Branch">
+            <End Role="Branch" EntitySet="Branch" />
+            <End Role="Class" EntitySet="Class" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_Class" Association="AAP.DAL.FK_Course_Class">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="Course" EntitySet="Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentCourses_Course" Association="AAP.DAL.FK_StudentCourses_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="StudentCourses" EntitySet="StudentCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeacherCourses_Course" Association="AAP.DAL.FK_TeacherCourses_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="TeacherCourses" EntitySet="TeacherCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exams_StudentCourses" Association="AAP.DAL.FK_Exams_StudentCourses">
+            <End Role="StudentCourses" EntitySet="StudentCourses" />
+            <End Role="Exams" EntitySet="Exams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentCourses_Student" Association="AAP.DAL.FK_StudentCourses_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="StudentCourses" EntitySet="StudentCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentAttendance_StudentCourses" Association="AAP.DAL.FK_StudentAttendance_StudentCourses">
+            <End Role="StudentCourses" EntitySet="StudentCourses" />
+            <End Role="StudentAttendance" EntitySet="StudentAttendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeacherCourses_Teacher" Association="AAP.DAL.FK_TeacherCourses_Teacher">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="TeacherCourses" EntitySet="TeacherCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeacherAttendance_TeacherCourses" Association="AAP.DAL.FK_TeacherAttendance_TeacherCourses">
+            <End Role="TeacherCourses" EntitySet="TeacherCourses" />
+            <End Role="TeacherAttendance" EntitySet="TeacherAttendance" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AddressLine1" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="AddressLine2" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="State" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Country" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Phone1" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Phone2" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="ContactPerson" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="DateLastModifiedUTC" Type="DateTime" Precision="3" />
+          <Property Name="IsArchive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Branch" Relationship="AAP.DAL.FK_Branch_Address" FromRole="Address" ToRole="Branch" />
+          <NavigationProperty Name="Student" Relationship="AAP.DAL.FK_Student_Address" FromRole="Address" ToRole="Student" />
+          <NavigationProperty Name="Teacher" Relationship="AAP.DAL.FK_Teacher_Address" FromRole="Address" ToRole="Teacher" />
+        </EntityType>
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="AddressId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Address" Relationship="AAP.DAL.FK_Branch_Address" FromRole="Branch" ToRole="Address" />
+          <NavigationProperty Name="Class" Relationship="AAP.DAL.FK_Class_Branch" FromRole="Branch" ToRole="Class" />
+        </EntityType>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Section" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="BranchId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Branch" Relationship="AAP.DAL.FK_Class_Branch" FromRole="Class" ToRole="Branch" />
+          <NavigationProperty Name="Course" Relationship="AAP.DAL.FK_Course_Class" FromRole="Class" ToRole="Course" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="ClassId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Class" Relationship="AAP.DAL.FK_Course_Class" FromRole="Course" ToRole="Class" />
+          <NavigationProperty Name="StudentCourses" Relationship="AAP.DAL.FK_StudentCourses_Course" FromRole="Course" ToRole="StudentCourses" />
+          <NavigationProperty Name="TeacherCourses" Relationship="AAP.DAL.FK_TeacherCourses_Course" FromRole="Course" ToRole="TeacherCourses" />
+        </EntityType>
+        <EntityType Name="Exams">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TheoryMarksTotal" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TheoryMarksObtained" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="PracticalMarksTotal" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PracticalMarksObtained" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TotalMaxMarks" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TotalMarksObtained" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="LastDateModified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="StudentCourseId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="StudentCourses" Relationship="AAP.DAL.FK_Exams_StudentCourses" FromRole="Exams" ToRole="StudentCourses" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="true" />
+          <Property Name="Religion" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Guardian" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Relation" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Comments" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="AddressId" Type="Int64" Nullable="false" />
+          <Property Name="ClassId" Type="Int64" Nullable="false" />
+          <Property Name="GuardianCNIC" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="LastModified" Type="DateTime" Precision="3" />
+          <Property Name="IsArchive" Type="Boolean" />
+          <NavigationProperty Name="Address" Relationship="AAP.DAL.FK_Student_Address" FromRole="Student" ToRole="Address" />
+          <NavigationProperty Name="StudentCourses" Relationship="AAP.DAL.FK_StudentCourses_Student" FromRole="Student" ToRole="StudentCourses" />
+        </EntityType>
+        <EntityType Name="StudentAttendance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentCourseId" Type="Int64" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsPresent" Type="Boolean" Nullable="false" />
+          <Property Name="OnLeave" Type="Boolean" />
+          <Property Name="Comments" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsArchive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="StudentCourses" Relationship="AAP.DAL.FK_StudentAttendance_StudentCourses" FromRole="StudentAttendance" ToRole="StudentCourses" />
+        </EntityType>
+        <EntityType Name="StudentCourses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentId" Type="Int64" Nullable="false" />
+          <Property Name="CourseId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Course" Relationship="AAP.DAL.FK_StudentCourses_Course" FromRole="StudentCourses" ToRole="Course" />
+          <NavigationProperty Name="Exams" Relationship="AAP.DAL.FK_Exams_StudentCourses" FromRole="StudentCourses" ToRole="Exams" />
+          <NavigationProperty Name="Student" Relationship="AAP.DAL.FK_StudentCourses_Student" FromRole="StudentCourses" ToRole="Student" />
+          <NavigationProperty Name="StudentAttendance" Relationship="AAP.DAL.FK_StudentAttendance_StudentCourses" FromRole="StudentCourses" ToRole="StudentAttendance" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="true" />
+          <Property Name="Religion" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="CNIC" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Comments" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="AddressId" Type="Int64" Nullable="false" />
+          <Property Name="ClassId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Address" Relationship="AAP.DAL.FK_Teacher_Address" FromRole="Teacher" ToRole="Address" />
+          <NavigationProperty Name="TeacherCourses" Relationship="AAP.DAL.FK_TeacherCourses_Teacher" FromRole="Teacher" ToRole="TeacherCourses" />
+        </EntityType>
+        <EntityType Name="TeacherAttendance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TeacherCourseId" Type="Int64" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsPresent" Type="Boolean" />
+          <Property Name="OnLeave" Type="Boolean" />
+          <Property Name="Comments" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="LastModifed" Type="DateTime" Precision="3" />
+          <Property Name="IsArchive" Type="Boolean" />
+          <NavigationProperty Name="TeacherCourses" Relationship="AAP.DAL.FK_TeacherAttendance_TeacherCourses" FromRole="TeacherAttendance" ToRole="TeacherCourses" />
+        </EntityType>
+        <EntityType Name="TeacherCourses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TeacherId" Type="Int64" Nullable="false" />
+          <Property Name="CourseId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Course" Relationship="AAP.DAL.FK_TeacherCourses_Course" FromRole="TeacherCourses" ToRole="Course" />
+          <NavigationProperty Name="Teacher" Relationship="AAP.DAL.FK_TeacherCourses_Teacher" FromRole="TeacherCourses" ToRole="Teacher" />
+          <NavigationProperty Name="TeacherAttendance" Relationship="AAP.DAL.FK_TeacherAttendance_TeacherCourses" FromRole="TeacherCourses" ToRole="TeacherAttendance" />
+        </EntityType>
+        <Association Name="FK_Branch_Address">
+          <End Role="Address" Type="AAP.DAL.Address" Multiplicity="1" />
+          <End Role="Branch" Type="AAP.DAL.Branch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Branch">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Address">
+          <End Role="Address" Type="AAP.DAL.Address" Multiplicity="1" />
+          <End Role="Student" Type="AAP.DAL.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacher_Address">
+          <End Role="Address" Type="AAP.DAL.Address" Multiplicity="1" />
+          <End Role="Teacher" Type="AAP.DAL.Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Teacher">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Class_Branch">
+          <End Role="Branch" Type="AAP.DAL.Branch" Multiplicity="1" />
+          <End Role="Class" Type="AAP.DAL.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="BranchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_Class">
+          <End Role="Class" Type="AAP.DAL.Class" Multiplicity="1" />
+          <End Role="Course" Type="AAP.DAL.Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentCourses_Course">
+          <End Role="Course" Type="AAP.DAL.Course" Multiplicity="1" />
+          <End Role="StudentCourses" Type="AAP.DAL.StudentCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentCourses">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeacherCourses_Course">
+          <End Role="Course" Type="AAP.DAL.Course" Multiplicity="1" />
+          <End Role="TeacherCourses" Type="AAP.DAL.TeacherCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TeacherCourses">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exams_StudentCourses">
+          <End Role="StudentCourses" Type="AAP.DAL.StudentCourses" Multiplicity="1" />
+          <End Role="Exams" Type="AAP.DAL.Exams" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentCourses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exams">
+              <PropertyRef Name="StudentCourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentCourses_Student">
+          <End Role="Student" Type="AAP.DAL.Student" Multiplicity="1" />
+          <End Role="StudentCourses" Type="AAP.DAL.StudentCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentCourses">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentAttendance_StudentCourses">
+          <End Role="StudentCourses" Type="AAP.DAL.StudentCourses" Multiplicity="1" />
+          <End Role="StudentAttendance" Type="AAP.DAL.StudentAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentCourses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentAttendance">
+              <PropertyRef Name="StudentCourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeacherCourses_Teacher">
+          <End Role="Teacher" Type="AAP.DAL.Teacher" Multiplicity="1" />
+          <End Role="TeacherCourses" Type="AAP.DAL.TeacherCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TeacherCourses">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeacherAttendance_TeacherCourses">
+          <End Role="TeacherCourses" Type="AAP.DAL.TeacherCourses" Multiplicity="1" />
+          <End Role="TeacherAttendance" Type="AAP.DAL.TeacherAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TeacherCourses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TeacherAttendance">
+              <PropertyRef Name="TeacherCourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AAPDALStoreContainer" CdmEntityContainer="AapDataEntities">
+          <EntitySetMapping Name="Address">
+            <EntityTypeMapping TypeName="AAP.DAL.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="DateLastModifiedUTC" ColumnName="DateLastModifiedUTC" />
+                <ScalarProperty Name="IsArchive" ColumnName="IsArchive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Branch">
+            <EntityTypeMapping TypeName="AAP.DAL.Branch">
+              <MappingFragment StoreEntitySet="Branch">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Class">
+            <EntityTypeMapping TypeName="AAP.DAL.Class">
+              <MappingFragment StoreEntitySet="Class">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Section" ColumnName="Section" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Course">
+            <EntityTypeMapping TypeName="AAP.DAL.Course">
+              <MappingFragment StoreEntitySet="Course">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exams">
+            <EntityTypeMapping TypeName="AAP.DAL.Exams">
+              <MappingFragment StoreEntitySet="Exams">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TheoryMarksTotal" ColumnName="TheoryMarksTotal" />
+                <ScalarProperty Name="TheoryMarksObtained" ColumnName="TheoryMarksObtained" />
+                <ScalarProperty Name="PracticalMarksTotal" ColumnName="PracticalMarksTotal" />
+                <ScalarProperty Name="PracticalMarksObtained" ColumnName="PracticalMarksObtained" />
+                <ScalarProperty Name="TotalMaxMarks" ColumnName="TotalMaxMarks" />
+                <ScalarProperty Name="TotalMarksObtained" ColumnName="TotalMarksObtained" />
+                <ScalarProperty Name="LastDateModified" ColumnName="LastDateModified" />
+                <ScalarProperty Name="StudentCourseId" ColumnName="StudentCourseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Student">
+            <EntityTypeMapping TypeName="AAP.DAL.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Religion" ColumnName="Religion" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="Guardian" ColumnName="Guardian" />
+                <ScalarProperty Name="Relation" ColumnName="Relation" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+                <ScalarProperty Name="GuardianCNIC" ColumnName="GuardianCNIC" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="IsArchive" ColumnName="IsArchive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentAttendance">
+            <EntityTypeMapping TypeName="AAP.DAL.StudentAttendance">
+              <MappingFragment StoreEntitySet="StudentAttendance">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StudentCourseId" ColumnName="StudentCourseId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="IsPresent" ColumnName="IsPresent" />
+                <ScalarProperty Name="OnLeave" ColumnName="OnLeave" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="IsArchive" ColumnName="IsArchive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentCourses">
+            <EntityTypeMapping TypeName="AAP.DAL.StudentCourses">
+              <MappingFragment StoreEntitySet="StudentCourses">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="AAP.DAL.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teacher">
+            <EntityTypeMapping TypeName="AAP.DAL.Teacher">
+              <MappingFragment StoreEntitySet="Teacher">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Religion" ColumnName="Religion" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="CNIC" ColumnName="CNIC" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeacherAttendance">
+            <EntityTypeMapping TypeName="AAP.DAL.TeacherAttendance">
+              <MappingFragment StoreEntitySet="TeacherAttendance">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TeacherCourseId" ColumnName="TeacherCourseId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="IsPresent" ColumnName="IsPresent" />
+                <ScalarProperty Name="OnLeave" ColumnName="OnLeave" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="LastModifed" ColumnName="LastModifed" />
+                <ScalarProperty Name="IsArchive" ColumnName="IsArchive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeacherCourses">
+            <EntityTypeMapping TypeName="AAP.DAL.TeacherCourses">
+              <MappingFragment StoreEntitySet="TeacherCourses">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
