@@ -25,5 +25,33 @@ namespace AAP.DAL
 		/// <returns></returns>
 		List<Student> GetAllStudents(bool showArchived = false, int startIndex = 0, int pageSize = 10, string orderBy = "ID", bool isAsc = true);
 
+		/// <summary>
+		/// Adds the student.
+		/// </summary>
+		/// <param name="stu">The student.</param>
+		/// <returns></returns>
+		bool AddStudent(Student stu);
+
+		/// <summary>
+		/// Adds the course.
+		/// </summary>
+		/// <param name="course">The course.</param>
+		/// <returns></returns>
+		bool AddCourse(Course course);
+
+		/// <summary>
+		/// Adds the teacher.
+		/// </summary>
+		/// <param name="teacher">The teacher.</param>
+		/// <returns></returns>
+		bool AddTeacher(Teacher teacher);
+
+		/// <summary>
+		/// Adds the branch.
+		/// </summary>
+		/// <param name="branch">The branch.</param>
+		/// <returns></returns>
+		bool AddBranch(Branch branch);
+
 	}
 }
