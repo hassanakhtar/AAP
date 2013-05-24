@@ -6,13 +6,13 @@ using System.Text;
 
 namespace APP.BLL.Services
 {
-	public interface ICourseService
+	public interface IBranchService
 	{
 		/// <summary>
-		/// Adds the course.
+		/// Adds the branch.
 		/// </summary>
-		/// <param name="course">The course.</param>
+		/// <param name="branch">The branch.</param>
 		/// <returns></returns>
-		bool AddCourse(Course course);
+		bool AddBranch(Branch branch);
 	}
 }

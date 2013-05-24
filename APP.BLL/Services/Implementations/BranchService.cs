@@ -6,17 +6,18 @@ using System.Text;
 
 namespace APP.BLL.Services
 {
-	public class TeacherService : ITeacherService
+	public class BranchService : IBranchService
 	{
 		public AAP.DAL.IDataServices DataService { get; set; }
 
-		public TeacherService()
+		public BranchService()
 		{
 			DataService = new AAP.DAL.DataServices();
 		}
-		public bool AddTeacher(Teacher teacher)
+
+		public bool AddBranch(Branch branch)
 		{
-			return DataService.AddTeacher((AAP.DAL.Teacher)teacher);
+			return DataService.AddBranch((AAP.DAL.Branch)branch);
 		}
 	}
 }
