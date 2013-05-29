@@ -107,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\AAP-Database.sql" />
+    <Content Include="Scripts\AAP-Default-Membership-Data.sql" />
     <Content Include="Scripts\SimpleMembership.sql" />
   </ItemGroup>
   <ItemGroup>

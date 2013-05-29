@@ -13,9 +13,8 @@ using AAP.Web.Models;
 
 namespace AAP.Web.Controllers
 {
-	[Authorize]
-	[InitializeSimpleMembership]
-	public class AccountController : Controller
+	[Security.AuthorizeAttribute]
+	public class AccountController : BaseController
 	{
 		//
 		// GET: /Account/Login
@@ -200,6 +199,7 @@ namespace AAP.Web.Controllers
 			return View(model);
 		}
 
+		/*
 		//
 		// POST: /Account/ExternalLogin
 
@@ -327,6 +327,8 @@ namespace AAP.Web.Controllers
 			ViewBag.ShowRemoveButton = externalLogins.Count > 1 || OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
 			return PartialView("_RemoveExternalLoginsPartial", externalLogins);
 		}
+		
+		*/
 
 		#region Helpers
 		private ActionResult RedirectToLocal(string returnUrl)
